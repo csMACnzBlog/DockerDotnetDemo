@@ -13,6 +13,9 @@ COPY . .
 RUN dotnet build ./MyApp/MyApp.csproj --no-restore -c Release -o /app
 
 FROM build as test
+
+# Allow TeamCity to turn on test output formatting
+ARG TEAMCITY_PROJECT_NAME
 ARG DOCKER_SKIP_TESTS
 
 WORKDIR /src
